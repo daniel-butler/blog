@@ -3,3 +3,4 @@ django
 django-environ
 pytest
 pytest-django
+django-allauth

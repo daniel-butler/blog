@@ -36,15 +36,20 @@ DEFAULT_DJANGO_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
 ]
 
 THIRD_PARTY_APPS = [
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.github',
 
 ]
 
 MY_APPS = [
     'blog',
-    'account',
+    'blogaccount',
 ]
 
 INSTALLED_APPS = DEFAULT_DJANGO_APPS + THIRD_PARTY_APPS + MY_APPS
@@ -90,7 +95,17 @@ DATABASES = {
 }
 
 
-AUTH_USER_MODEL = 'account.User'
+# Authentication
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
+
+SITE_ID = 1
+
+LOGIN_REDIRECT_URL = 'home'
+
+AUTH_USER_MODEL = 'blogaccount.User'
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
