@@ -1,0 +1,7 @@
+# PostgreSQL
+# ------------------------------------------------------------------------------
+POSTGRES_HOST=postgres
+POSTGRES_PORT=5432
+POSTGRES_DB=ship_simplicity_blog
+POSTGRES_USER=KswMjAvnsvDNAHohkTSQOjglLSAWvXBf
+POSTGRES_PASSWORD=7YwOdaSuL318zsl0AtjaqrtwtXTHVNc1q8urr31K3mYATV39k2VbHQLLhrgXNn2V
