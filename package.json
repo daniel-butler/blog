@@ -1,6 +1,6 @@
 {
   "name": "ship_simplicity_blog",
-  "version": "2019.06",
+  "version": "2019.06.01",
   "dependencies": {},
   "devDependencies": {
     "autoprefixer": "^9.4.7",
@@ -24,5 +24,12 @@
   "scripts": {
     "dev": "gulp",
     "build": "gulp generate-assets"
+  },
+  "description": "blog about about shipping simplicity",
+  "readme": "README.rst",
+  "license": "LICENSE",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dbutlerdb/blog.git"
   }
 }
