@@ -27,3 +27,11 @@ django-debug-toolbar==2.0  # https://github.com/jazzband/django-debug-toolbar
 django-extensions==2.1.9  # https://github.com/django-extensions/django-extensions
 django-coverage-plugin==1.6.0  # https://github.com/nedbat/django_coverage_plugin
 pytest-django==3.5.0  # https://github.com/pytest-dev/pytest-django
+
+
+# From TDD Blog https://test-driven-django-development.readthedocs.io/en/latest/01-getting-started.html#creating-the-project
+# ------------------------------------------------------------------------------
+WebTest
+django-webtest
+
+
