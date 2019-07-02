@@ -7,3 +7,9 @@ from ..models import Entry
 def test_string_representation():
     entry = Entry(title="Test Title")
     assert str(entry) == entry.title
+
+
+def test_verbose_name_plural_is_entries():
+    assert str(Entry._meta.verbose_name_plural) == 'entries'
+
+
