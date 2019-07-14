@@ -8,7 +8,9 @@ from ..models import Entry, EntryBody, Tag, TagToEntry
 @pytest.fixture
 def user_body_entry():
     user = get_user_model().objects.create(name='some_user')
-    entry_body = EntryBody.objects.create(body="This is a test body that should be cut off but to make sure I am adding more")
+    entry_body = EntryBody.objects.create(
+        body="This is a test body that should be cut off but to make sure I am adding more"
+    )
     entry = Entry.objects.create(title='1-title', body=entry_body, author=user)
     return user, entry_body, entry
 
