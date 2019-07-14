@@ -8,10 +8,11 @@ from ..models import Entry, EntryBody, Tag, TagToEntry
 @pytest.fixture
 def user_body_entry():
     user = get_user_model().objects.create(name='some_user')
+    entry = Entry.objects.create(title='1-title', author=user)
     entry_body = EntryBody.objects.create(
-        body="This is a test body that should be cut off but to make sure I am adding more"
+        body="This is a test body that should be cut off but to make sure I am adding more",
+        entry=entry,
     )
-    entry = Entry.objects.create(title='1-title', body=entry_body, author=user)
     return user, entry_body, entry
 
 
@@ -54,8 +55,8 @@ def test_tags_to_entries(user_body_entry):
     user, entry_body, entry = user_body_entry
     tag = Tag.objects.create(name="Django Test")
 
-    tag_to_entry = TagToEntry.objects.create(tag_id=tag, entry_id=entry)
+    tag_to_entry = TagToEntry.objects.create(tag=tag, entry=entry)
 
-    assert tag_to_entry.tag_id.name == 'Django Test'
-    assert tag_to_entry.entry_id.title == '1-title'
+    assert tag_to_entry.tag.name == 'Django Test'
+    assert tag_to_entry.entry.title == '1-title'
 
