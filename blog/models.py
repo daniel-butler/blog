@@ -11,6 +11,12 @@ class EntryBody(models.Model):
     created = models.DateTimeField(auto_now_add=True, editable=False)
     modified = models.DateTimeField(auto_now=True, editable=False)
 
+    def __str__(self):
+        return self.body[:50] + '...'
+
+    class Meta:
+        verbose_name_plural = 'entry bodies'
+
 
 class Tag(models.Model):
     id = models.AutoField(unique=True, primary_key=True)
