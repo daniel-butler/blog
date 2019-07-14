@@ -1,6 +1,16 @@
+from django.contrib.auth import get_user_model
+
 import pytest
 
 from ..models import Entry, EntryBody, Tag, TagToEntry
+
+
+@pytest.fixture
+def user_body_entry():
+    user = get_user_model().objects.create(name='some_user')
+    entry_body = EntryBody.objects.create(body="This is a test body that should be cut off but to make sure I am adding more")
+    entry = Entry.objects.create(title='1-title', body=entry_body, author=user)
+    return user, entry_body, entry
 
 
 @pytest.mark.django_db(transaction=False)
@@ -35,3 +45,15 @@ def test_tag_verbose_name_plural_is_tags():
 
 def test_tag_to_entry_verbose_name_plural_is_tags_to_entries():
     assert str(TagToEntry._meta.verbose_name_plural) == 'tags to entries'
+
+
+@pytest.mark.django_db(transaction=True)
+def test_tags_to_entries(user_body_entry):
+    user, entry_body, entry = user_body_entry
+    tag = Tag.objects.create(name="Django Test")
+
+    tag_to_entry = TagToEntry.objects.create(tag_id=tag, entry_id=entry)
+
+    assert tag_to_entry.tag_id.name == 'Django Test'
+    assert tag_to_entry.entry_id.title == '1-title'
+
