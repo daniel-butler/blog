@@ -1,6 +1,6 @@
 import pytest
 
-from ..models import Entry, EntryBody
+from ..models import Entry, EntryBody, Tag, TagToEntry
 
 
 @pytest.mark.django_db(transaction=False)
@@ -22,3 +22,16 @@ def test_entry_body_string_representation():
 def test_entry_body_verbose_name_plural_is_entry_bodies():
     assert str(EntryBody._meta.verbose_name_plural) == 'entry bodies'
 
+
+@pytest.mark.django_db(transaction=False)
+def test_tag_string_representation():
+    tag = Tag(name="Test Name")
+    assert str(tag) == tag.name
+
+
+def test_tag_verbose_name_plural_is_tags():
+    assert str(Tag._meta.verbose_name_plural) == 'tags'
+
+
+def test_tag_to_entry_verbose_name_plural_is_tags_to_entries():
+    assert str(TagToEntry._meta.verbose_name_plural) == 'tags to entries'

@@ -24,6 +24,12 @@ class Tag(models.Model):
     created = models.DateTimeField(auto_now_add=True, editable=False)
     modified = models.DateTimeField(auto_now=True, editable=False)
 
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name_plural = 'tags'
+
 
 class Entry(models.Model):
     id = models.AutoField(unique=True, primary_key=True)
@@ -49,4 +55,7 @@ class TagToEntry(models.Model):
     tag_id = models.ForeignKey(to=Tag, on_delete=models.CASCADE, related_name='tags')
     created = models.DateTimeField(auto_now_add=True, editable=False)
     modified = models.DateTimeField(auto_now=True, editable=False)
+
+    class Meta:
+        verbose_name_plural = 'tags to entries'
 
