@@ -14,7 +14,7 @@ def test_entry_verbose_name_plural_is_entries():
 
 
 @pytest.mark.django_db(transaction=False)
-def test_string_representation():
+def test_entry_body_string_representation():
     entry_body = EntryBody(body="This is a test body that should be cut off but to make sure I am adding more")
     assert str(entry_body) == entry_body.body[:50] + '...'
 
